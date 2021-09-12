@@ -7,19 +7,18 @@ namespace Fortuna
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-	    int pix=500; 		// TODO ändra till double eller nåt & avrunda
+	    int pix=500; 		
 	    int luckyNumber; 		// Engelska p.g.a blir nervös av åäö i var.
-	    int numberCorrect=-1;	// se rad markerad 'hejsan'
+	    int numberCorrect=0;	
 	    int bet;
 	    int diceRoll;
 	    string input="";
-	    int winningsMultiplier=0;
+	    int[] winningsMultiplier = new int[] {0, 2 ,3,4};
 	    Random rnd = new Random();
 	    bool go_on=true;
 	    while (go_on)
 	    {
-		    numberCorrect=-1;
-		   
+		 numberCorrect=0; // Reset  
 		do
 		{
 			Console.WriteLine("Ange ditt lyckotal mellan 1 - 6");
@@ -56,19 +55,16 @@ namespace Fortuna
 		  { 
 			diceRoll=rnd.Next(1,6);
 			Console.WriteLine("Tärningskast "+ i + " blev "+ diceRoll);
-			if ( diceRoll == luckyNumber && numberCorrect != -1 )
+			if ( diceRoll == luckyNumber  )
 			{
 				numberCorrect++;
-			}
-			else if ( numberCorrect == -1 && diceRoll == luckyNumber )
-			{
-				numberCorrect=1;
 			}
 
 		  }
 		pix= pix - bet;
-		winningsMultiplier=numberCorrect+1;		// hejsan
-		pix = pix + (bet * winningsMultiplier);
+		Console.WriteLine ("numberCorrect "+numberCorrect);
+	                                               
+		pix = pix + (bet * winningsMultiplier[numberCorrect]);
 		Console.WriteLine ("Du har " + pix + " pix");
  		if ( pix < 50)
 			{
