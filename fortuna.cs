@@ -35,7 +35,7 @@ namespace Fortuna
                 for (int i = 1; i < (numberRolls + 1); i++)
                 {
                     diceRoll = rnd.Next(1, (diceSides +1));                         // +1 ty annars blir resultatet aldrig = diceSides. Det blir dock = 1. fattar inte varför
-                    Console.WriteLine("Tärningskast " + i + " blev " + diceRoll);
+                    Console.WriteLine("Tärningskast " + i + " blev " + diceRoll);  // ^^^^ Jo, nu fattar jag.
                     if (diceRoll == luckyNumber)
                     {
                         numberCorrect++;
